@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  calculator:
+    image: calculator
+    container_name: calculator
+    stdin_open: true  # Keep STDIN open for interactive input (useful if needed later)
+    tty: true         # Allocate a pseudo-TTY
+    entrypoint: ["java", "-jar", "app.jar"]

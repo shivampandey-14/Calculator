@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    environment {
+            DOCKER_IMAGE = 'shivampandey88/calculator:latest'
+//             ANSIBLE_PLAYBOOK = 'deploy.yml'
+        }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -23,6 +29,21 @@ pipeline {
                 }
             }
         }
+        stage('Build Docker Image') {
+                    steps {
+                        sh 'docker build -t $DOCKER_IMAGE .'
+                    }
+                }
+
+                stage('Push Docker Image') {
+                    steps {
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                            sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
+                            sh 'docker push $DOCKER_IMAGE'
+                        }
+                    }
+                }
+
     }
 
     post {
