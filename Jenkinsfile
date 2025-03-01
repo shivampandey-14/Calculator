@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-            DOCKER_IMAGE = 'shivampandey88/calculator:latest'
+            DOCKER_IMAGE = 'shivampandey88/calculator_v1:latest'
 //             ANSIBLE_PLAYBOOK = 'deploy.yml'
         }
 
