@@ -5,18 +5,18 @@
   tasks:
 
     - name: Pull Latest Docker Image
-      command: docker pull shivampandey88/calculator:latest
+      command: docker pull shivampandey88/calculator_v1:latest
 
     - name: Stop and Remove Existing Container
-      command: docker rm -f calculator
+      command: docker rm -f calculator_v1
       ignore_errors: yes
 
     - name: Remove Old Docker Images (Optional)
-      shell: docker images -q shivampandey88/calculator | xargs -r docker rmi -f
+      shell: docker images -q shivampandey88/calculator_v1 | xargs -r docker rmi -f
       ignore_errors: yes
 
     - name: Run Scientific Calculator Container
       command: >
-        docker run -d --name calculator 
-        shivampandey88/calculator:latest 
+        docker run -d --name calculator_v1 
+        shivampandey88/calculator_v1:latest 
         java -jar app.jar 1 4 2
