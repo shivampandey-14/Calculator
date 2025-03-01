@@ -8,5 +8,5 @@ WORKDIR /app
 COPY target/calculator-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
 
 # Keep container running by default
-ENTRYPOINT ["sh", "-c", "sleep infinity"]
+# ENTRYPOINT ["sh", "-c", "sleep infinity"]
 CMD ["java", "-jar", "app.jar"]
