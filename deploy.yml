@@ -17,6 +17,6 @@
 
     - name: Run Scientific Calculator Container
       command: >
-        docker run -d --name calculator_v1 
+        docker run -it -d --name calculator_v1 
         shivampandey88/calculator_v1:latest 
         java -jar app.jar 1 4 2
