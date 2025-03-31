@@ -1,6 +1,5 @@
 package org.example;
 
-
 public class Calculator {
     public static double calculate(double num1, char operator, double num2) {
         switch (operator) {
